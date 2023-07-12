@@ -1,0 +1,52 @@
+3. Write a program to find whether a given number is special number or
+
+not-
+If the sum of the factorial of digits of a number (N) is equal to the
+
+number itself, the number (N) is called a special number.
+eg- 145 is a special number
+Logic- 1! + 4! + 5!= 1+24+120 i.e 14
+
+
+
+
+
+Ans:
+
+
+function factorial(number) {
+  if (number === 0 || number === 1) 
+{
+    return 1;
+  } 
+else {
+    var result = 1;
+    for (var i = 2; i <= number; i++)
+ {
+      result *= i;
+    }
+    return result;
+  }
+}
+
+function isSpecialNumber(number) 
+{
+  var sum = 0;
+  var temp = number;
+  
+  while (temp > 0) 
+{
+    var digit = temp % 10;
+    sum += factorial(digit);
+    temp = Math.floor(temp / 10);
+  }
+  
+  return number === sum;
+}
+
+
+
+// Example:
+var number = 145;
+var isSpecial = isSpecialNumber(number);
+console.log(number + " is a special number? " + isSpecial);
